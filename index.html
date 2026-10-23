@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="GEMS: Gaussian Episodic Memory for Long-Term Spatiotemporal Reasoning">
+  <meta name="description" content="GEMS combines a persistent 3D Gaussian Splatting map that is updated only where the scene changes with an agentic reasoning pipeline that renders novel views on demand to answer spatiotemporal questions.">
+  <meta name="keywords" content="episodic memory, 3D Gaussian Splatting, spatiotemporal reasoning, embodied question answering, semi-static environments, robotics">
+  <meta name="author" content="Ling-Chia Chen, Abdelrhman Werby, Kaan Aytekin, Kai O. Arras">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="University of Stuttgart">
+  <meta property="og:title" content="GEMS: Gaussian Episodic Memory for Long-Term Spatiotemporal Reasoning">
+  <meta property="og:description" content="GEMS combines a persistent 3D Gaussian Splatting map that is updated only where the scene changes with an agentic reasoning pipeline that renders novel views on demand to answer spatiotemporal questions.">
+  <meta property="og:url" content="https://abwerby.github.io/GEMS/">
+  <meta property="og:image" content="https://abwerby.github.io/GEMS/static/images/teaser.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GEMS: Gaussian Episodic Memory for Long-Term Spatiotemporal Reasoning">
+  <meta name="twitter:description" content="GEMS combines a persistent 3D Gaussian Splatting map that is updated only where the scene changes with an agentic reasoning pipeline that renders novel views on demand to answer spatiotemporal questions.">
+  <meta name="twitter:image" content="https://abwerby.github.io/GEMS/static/images/teaser.jpg">
+
+  <!-- Academic Metadata -->
+  <meta name="citation_title" content="Gaussian Episodic Memory for Long-Term Spatiotemporal Reasoning">
+  <meta name="citation_author" content="Chen, Ling-Chia">
+  <meta name="citation_author" content="Werby, Abdelrhman">
+  <meta name="citation_author" content="Aytekin, Kaan">
+  <meta name="citation_author" content="Arras, Kai O.">
+  <meta name="citation_publication_date" content="2026">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>GEMS: Gaussian Episodic Memory for Long-Term Spatiotemporal Reasoning</title>
+
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <style>
+    .figure-caption { font-size: 1rem; color: #4a4a4a; margin-top: 1rem; text-align: justify; }
+    .paper-figure { width: 100%; height: auto; }
+    .button.is-disabled-link { opacity: 0.6; pointer-events: none; }
+    .affiliation-logos { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin: 1.25rem 0 0.5rem; }
+    .affiliation-logos img { display: block; width: auto; }
+    .title-hero .hero-body { padding-bottom: 0.5rem; }
+    .teaser .hero-body { padding-top: 0.5rem; }
+    .logo-unistuttgart { height: 48px; }
+    .logo-imprs { height: 30px; }
+    @media (max-width: 480px) { .logo-unistuttgart { height: 38px; } .logo-imprs { height: 24px; } }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Gaussian Episodic Memory for Long-Term Spatiotemporal Reasoning",
+    "description": "GEMS combines a persistent 3D Gaussian Splatting map that is updated only where the scene changes with an agentic reasoning pipeline that renders novel views on demand to answer spatiotemporal questions.",
+    "author": [
+      {"@type": "Person", "name": "Ling-Chia Chen", "affiliation": {"@type": "Organization", "name": "University of Stuttgart"}},
+      {"@type": "Person", "name": "Abdelrhman Werby", "affiliation": [{"@type": "Organization", "name": "University of Stuttgart"}, {"@type": "Organization", "name": "International Max Planck Research School for Intelligent Systems"}]},
+      {"@type": "Person", "name": "Kaan Aytekin", "affiliation": [{"@type": "Organization", "name": "University of Stuttgart"}, {"@type": "Organization", "name": "International Max Planck Research School for Intelligent Systems"}]},
+      {"@type": "Person", "name": "Kai O. Arras", "affiliation": {"@type": "Organization", "name": "University of Stuttgart"}}
+    ],
+    "datePublished": "2026",
+    "url": "https://abwerby.github.io/GEMS/",
+    "image": "https://abwerby.github.io/GEMS/static/images/teaser.jpg",
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero title-hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">GEMS: Gaussian Episodic Memory for Long-Term Spatiotemporal Reasoning</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Ling-Chia Chen<sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="https://abwerby.github.io/" target="_blank" rel="noopener">Abdelrhman Werby</a><sup>1,2*</sup>,
+              </span>
+              <span class="author-block">Kaan Aytekin<sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.ki.uni-stuttgart.de/institute/team/Arras/" target="_blank" rel="noopener">Kai O. Arras</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><sup>1</sup> University of Stuttgart</span>
+              &nbsp;&nbsp;
+              <span class="author-block"><sup>2</sup> IMPRS-IS</span>
+              &nbsp;&nbsp;
+              <span class="author-block"><sup>*</sup> Equal contribution</span>
+            </div>
+
+            <div class="affiliation-logos">
+              <a href="https://www.uni-stuttgart.de/en/" target="_blank" rel="noopener">
+                <img src="static/images/logo_unistuttgart.png" class="logo-unistuttgart" alt="University of Stuttgart">
+              </a>
+              <a href="https://imprs.is.mpg.de/" target="_blank" rel="noopener">
+                <img src="static/images/logo_imprs_is.png" class="logo-imprs" alt="International Max Planck Research School for Intelligent Systems (IMPRS-IS)">
+              </a>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark is-disabled-link">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv (coming soon)</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://github.com/abwerby/GEMS" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser figure -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="static/images/teaser.jpg" class="paper-figure" alt="GEMS overview: a robot revisits a semi-static scene, GEMS stores a Gaussian map and per-visit differences, and an agent answers questions using the map">
+        <h2 class="subtitle has-text-centered figure-caption">
+          A robot revisits a semi-static scene, yielding a posed RGB-D sequence per visit (left). GEMS reconstructs the first visit into a Gaussian map and records each later visit as a difference capturing only the regions that changed, so the scene at any past visit is recovered by rendering the map together with the differences up to that visit (middle). Given a question (right), the agent explores the scene using its toolbox and answers based on the collected evidence.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Real-world environments undergo continual semi-static changes, requiring a memory representation that captures both the spatial and temporal evolution of a scene.
+              Existing spatio-temporal memories for robots typically rely either on structured representations, which are limited to the entities and attributes captured during construction, or on image-based memories, which are constrained to previously observed viewpoints.
+              We introduce GEMS, a framework that combines a persistent spatio-temporal 3D Gaussian Splatting (3DGS) map with an agentic reasoning pipeline.
+              The 3DGS map is reconstructed once and subsequently updated only in regions where the scene changes, storing only these modifications while preserving visual detail across time.
+              The agentic pipeline leverages this map to render novel views on demand, iteratively accumulating evidence to answer spatio-temporal questions and ground objects from natural-language queries.
+              To advance future research, we introduce GEMS-Bench, a spatiotemporal question-answering benchmark focused on semi-static environments. It comprises 3 real-world and 12 synthetic environments, spanning 473 question-answer pairs.
+              We evaluate GEMS on novel-view synthesis quality across scene updates, 3D object grounding, spatiotemporal question answering, and storage efficiency. GEMS outperforms recent baselines in 3D object grounding and spatiotemporal question answering, while achieving rendering quality on par with dedicated scene-update methods.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <img src="static/images/method.jpg" class="paper-figure" alt="GEMS method overview: mapping with change detection and Add, Remove, Refine updates, and reasoning with an LLM planner and memory tools" loading="lazy">
+      <div class="container is-max-desktop">
+        <p class="figure-caption">
+          <em>Left:</em> mapping. On each revisit, keyframes rendered from the previous map are compared against the incoming observations to obtain a change mask, components of which are labeled as <em>Add</em>, <em>Remove</em>, or <em>Refine</em> based on the depth error. The affected Gaussian primitives are re-optimized. Each Gaussian carries a lifespan [b, d), so the state of the scene at any past time can be retrieved as a temporal slice. <em>Right:</em> reasoning. An LLM planner answers a query through memory tools, and an answer synthesizer concludes from the gathered evidence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qualitative results -->
+  <section class="section hero is-light">
+    <div class="container is-max-widescreen">
+      <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
+      <img src="static/images/qualitative.jpg" class="paper-figure" alt="Qualitative comparison of GEMS against GEMS-all-images on spatiotemporal questions, showing collected evidence and judge scores" loading="lazy">
+      <div class="container is-max-desktop">
+        <p class="figure-caption">
+          Qualitative comparison of GEMS against GEMS-all-images. Each column shows a question, the evidence each agent collected, and the LLM-judge score. <em>Left:</em> a synthesized closer view resolves a spatial ambiguity from an oblique camera angle. <em>Middle and right:</em> <code>time_view</code> lets GEMS compare both visits from one pose, where the baseline is restricted to two different stored viewpoints.
+        </p>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
